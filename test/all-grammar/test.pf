@@ -32,24 +32,24 @@ def draw_fractal(int stop, int dep, int x1, int y1, int x2, int y2, int x3, int 
 def main() -> int {
   
   // Draw a circle, then unfold its edge.
-  int x = 40, y = 40, radius = 20;
+  int x = 400, y = 400, radius = 200;
   draw circle(vec(x, y), radius, #c20e0e);
-  draw line(vec(x, y + radius), vec(x + calculate_perimeter(radius), y + radius), 2, #0e5b0a);
+  draw line(vec(x, y + radius), vec(x + calculate_perimeter(radius), y + radius), 20, #0e5b0a);
 
   // Draw a row of rectangles.
-  int sx = 10, sy = 80, edge = 20, sep = 10;
+  int sx = 100, sy = 800, edge = 200, sep = 100;
   for (int i = 0; i < 6; i++) {
     int rx = sx + i * (edge + sep), ry = sy;
     draw rectangle(vec(rx, ry), vec(rx + edge, ry + edge), #6915f1);
   }
 
   // Draw two fractal shapes.
-  draw_fractal(3, 0, 20, 120, 20, 180, 140, 180);
-  draw_fractal(4, 0, 60, 120, 180, 120, 180, 180);
+  draw_fractal(3, 0, 200, 1200, 200, 1800, 1400, 1800);
+  draw_fractal(4, 0, 600, 1200, 1800, 1200, 1800, 1800);
 
   // Draw a row of circles.
-  int index = 0, cx = 80, cy = 20; 
-  sep = 25; radius = 10;
+  int index = 0, cx = 800, cy = 200; 
+  sep = 250; radius = 100;
   while (++index < 5) {
     draw circle(vec(cx, cy), radius, #a910ae);
     cx = cx + sep;

@@ -46,19 +46,19 @@ void draw_fractal(int stop, int dep, int x1, int y1, int x2, int y2, int x3, int
 }
 
 int main() {
-  int x = 40,y = 40,radius = 20;
+  int x = 400,y = 400,radius = 200;
   printf("circ %.2lf %.2lf %.2lf %s\n", (double) x, (double) y, (double) radius, "$c20e0e");
-  printf("line %.2lf %.2lf %.2lf %.2lf %.2lf %s\n", (double) x, (double) y + radius, (double) x + calculate_perimeter(radius), (double) y + radius, (double) 2, "$0e5b0a");
-  int sx = 10,sy = 80,edge = 20,sep = 10;
+  printf("line %.2lf %.2lf %.2lf %.2lf %.2lf %s\n", (double) x, (double) y + radius, (double) x + calculate_perimeter(radius), (double) y + radius, (double) 20, "$0e5b0a");
+  int sx = 100,sy = 800,edge = 200,sep = 100;
   for (int i = 0; i < 6; i++) {
     int rx = sx + i * (edge + sep),ry = sy;
     printf("rect %.2lf %.2lf %.2lf %.2lf %s\n", (double) rx, (double) ry, (double) rx + edge, (double) ry + edge, "$6915f1");
   }
-  draw_fractal(3, 0, 20, 120, 20, 180, 140, 180);
-  draw_fractal(4, 0, 60, 120, 180, 120, 180, 180);
-  int index = 0,cx = 80,cy = 20;
-  sep= 25;
-  radius= 10;
+  draw_fractal(3, 0, 200, 1200, 200, 1800, 1400, 1800);
+  draw_fractal(4, 0, 600, 1200, 1800, 1200, 1800, 1800);
+  int index = 0,cx = 800,cy = 200;
+  sep= 250;
+  radius= 100;
   while(++index < 5) {
     printf("circ %.2lf %.2lf %.2lf %s\n", (double) cx, (double) cy, (double) radius, "$a910ae");
     cx= cx + sep;
