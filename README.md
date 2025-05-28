@@ -152,6 +152,6 @@ def main() -> int {
 }
 ```
 
-# Rendered effect
+Rendered effect
 
 > ![effect](https://github.com/smallphan/PFC/blob/master/pics/a.out.png)
