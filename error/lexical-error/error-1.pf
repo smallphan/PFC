@@ -1,0 +1,7 @@
+// Unqualified identifier.
+
+def main() -> int {
+  int asdf_123;
+  int _123asdf;
+  int 123_asdf;
+}

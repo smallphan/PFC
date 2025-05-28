@@ -1,0 +1,6 @@
+// Redundant subexpression.
+
+def main() -> int {
+  int a, b, c;
+  int num = -a + (b * 3.1415926) c;
+}

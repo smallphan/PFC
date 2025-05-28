@@ -1,0 +1,8 @@
+// Incomplete syntax structure.
+
+def main() -> int {
+  int num = 10;
+  if {
+    num++;
+  }
+}

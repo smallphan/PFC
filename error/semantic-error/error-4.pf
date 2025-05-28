@@ -1,0 +1,6 @@
+// Redefined variable.
+
+def main() -> int {
+  int num = 5;
+  float num = 6.0;
+}

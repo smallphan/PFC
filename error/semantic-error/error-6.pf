@@ -1,0 +1,9 @@
+// Function does not have RETURN SENTENCE.
+
+def calculate(int num) -> float {
+  int test = num;
+}
+
+def main() -> int {
+  int num = calculate(3);
+}

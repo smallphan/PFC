@@ -1,0 +1,5 @@
+// Incomplete syntax structure.
+
+def main() -> {
+  int testVariable;
+}

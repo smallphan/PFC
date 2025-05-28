@@ -1,0 +1,6 @@
+// Redundant increment/decrement symbol.
+
+def main() -> int {
+  int a;
+  int num = ++a++;
+}

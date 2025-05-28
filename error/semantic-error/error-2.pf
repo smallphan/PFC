@@ -1,0 +1,5 @@
+// Undefined variable.
+
+def main() -> int {
+  int num = testVariable + 2;
+}

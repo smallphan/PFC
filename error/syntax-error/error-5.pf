@@ -1,0 +1,5 @@
+// Redundant arithmetic symbol.
+
+def main() -> int {
+  int num = 1 + + 2;
+}

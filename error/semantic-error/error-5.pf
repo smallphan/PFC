@@ -1,0 +1,13 @@
+// Redefined function.
+
+def calculate(float a) -> float {
+  return a;
+}
+
+def calculate(float b, float c) -> float {
+  return b + c;
+}
+
+def main() -> int {
+  int num = calculate(3);
+}

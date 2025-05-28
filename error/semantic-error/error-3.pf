@@ -1,0 +1,5 @@
+// Undefined function.
+
+def main() -> int {
+  int num = testFunction(2, 4) + 2;
+}
