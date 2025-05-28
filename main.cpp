@@ -77,7 +77,7 @@ execute_proxy(
   } while (!proxy.is_open() && ++failTime < 5);
   if (failTime >= 5) error_info("[Compiler Error]", "Cannot create temporary proxy file.");
   else {
-    proxy << content << endl;
+    proxy << content;
     system(("g++ " + proxyName + ".cpp -o " + proxyName).c_str());
     if (drawcode) {
       system((proxyName + " > " + ouName + ".draw").c_str());

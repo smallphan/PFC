@@ -49,7 +49,7 @@ def main() -> int {
 
   // Draw a row of circles.
   int index = 0, cx = 800, cy = 200; 
-  sep = 250; radius = 100;
+  sep = 250, radius = 100;
   while (++index < 5) {
     draw circle(vec(cx, cy), radius, #a910ae);
     cx = cx + sep;

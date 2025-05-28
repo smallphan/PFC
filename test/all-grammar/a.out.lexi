@@ -501,7 +501,7 @@
  sep                      Identifier               39           52           2            
  =                        Operator                 24           52           6            
  250                      Integer                  37           52           8            
- ;                        Symbol                   32           52           11           
+ ,                        Symbol                   31           52           11           
  radius                   Identifier               39           52           13           
  =                        Operator                 24           52           20           
  100                      Integer                  37           52           22           

@@ -404,7 +404,7 @@ reco_define(
     }
 
     if (lexiinfo[index].lexiID == keywords.id(",")) {
-      content += lexiinfo[index++].content;
+      content += lexiinfo[index++].content + " ";
     }
   }
 
@@ -452,7 +452,7 @@ reco_multiformula(
     if (lexiinfo[index].lexiID == keywords.id(",")) {
       content += lexiinfo[index++].content + " ";
     } else if (lexiinfo[index].lexiID == keywords.id("=")) {
-      content += lexiinfo[index++].content + " ";
+      content += " " + lexiinfo[index++].content + " ";
     }
   }
 
@@ -604,11 +604,11 @@ reco_return(
   string content;
 
   if (lexiinfo[index].lexiID == keywords.id("return")) {
-    content += lexiinfo[index++].content + " ";
+    content += lexiinfo[index++].content;
   } else error_item("[Syntax Error]", "Incomplete syntax structure. Here should be keywords \"return\".", lexiinfo[index]);
 
   if (check_boarder(index)) {
-    content += reco_formula(index);
+    content += " " + reco_formula(index);
   } else if (reqReturnVal) {
     error_item("[Semantic Error]", "Function need return value to return.", lexiinfo[index]);
   }
@@ -776,7 +776,7 @@ generate_proxy(
   fstream outProxy(ouName + ".cpp", ios::out | ios::trunc);
   if (!outProxy.is_open()) error_info("[Compiler Error]", "Cannot create proxy file.");
   else {
-    outProxy << content << endl;
+    outProxy << content;
   }
 }
 
@@ -812,6 +812,7 @@ recognize(
       content += reco_function(index) + "\n\n";
     } else error_item("[Syntax Error]", "Incomplete syntax structure. Here should be keyword \"def\".", lexiinfo[index]);
   }
+  content += "// Proxy code ends.\n";
   if (cprxcode) generate_proxy(content, ouName);
   return content;
 }
