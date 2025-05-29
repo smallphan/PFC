@@ -1,0 +1,5 @@
+// Multiple dot of a float number.
+
+def main() -> int {
+  float num = 3.14.15;
+}

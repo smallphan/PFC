@@ -1,0 +1,5 @@
+// Unqualified format of number.
+
+def main() -> int {
+  float num = 004;
+}

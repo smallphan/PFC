@@ -1,4 +1,4 @@
-// Unqualified identifier.
+// Unqualified format of identifier.
 
 def main() -> int {
   int asdf_123;

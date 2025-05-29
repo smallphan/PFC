@@ -101,7 +101,11 @@ tokenize(
       }
       if (isIdentifierHead(line[i])) {
         int pos = i; while (isIdentifierPart(line[pos++]));
-        error_line("[Lexical Error]", "Unqualified identifier.", line, lineCnt, i - num.length(), pos - i - 1 + num.length());
+        error_line("[Lexical Error]", "Unqualified format of identifier.", line, lineCnt, i - num.length(), pos - i - 1 + num.length());
+      } else if (line[i] == '.' && hasDecimal) {
+        error_line("[Lexical Error]", "Multiple dot of a float number.", line, lineCnt, i, 1);
+      } else if (num.length() > 1 && num[0] == '0') {
+        error_line("[Lexical Error]", "Unqualified format of number.", line, lineCnt, i - num.length(), num.length());
       }
       if (hasDecimal) lexiinfo.push_back((LexiItem) { num, "Float", keywords.id("float"), lineCnt, int(i - num.length()) });
       else lexiinfo.push_back((LexiItem) { num, "Integer", keywords.id("integer"), lineCnt, int(i - num.length()) });
