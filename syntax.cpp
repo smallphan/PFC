@@ -36,6 +36,7 @@ check_boarder(
     lexiinfo[index].lexiID != keywords.id(",") &&
     lexiinfo[index].lexiID != keywords.id(";") &&
     lexiinfo[index].lexiID != keywords.id(")") &&
+    lexiinfo[index].lexiID != keywords.id("color") &&
     !isCompOperator(lexiinfo[index].lexiID);
 }
 

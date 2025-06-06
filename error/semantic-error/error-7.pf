@@ -1,4 +1,4 @@
-// Function does not have RETURN SENTENCE.
+// Function need return value to return.
 
 def calculate(int num) -> float {
   return;

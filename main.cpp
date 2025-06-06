@@ -22,6 +22,7 @@ showHelp() {
   printf("  -d                            Generate intermediate code.                                                      \n");
   printf("  -c                            Generate proxy code (C++).                                                       \n");
   printf("  -l                            Generate lexical analysis results.                                               \n");
+  printf("  -a                            Enable antialiasing mode.                                                        \n");
   printf("  -s <width> <height>           Set the image height and width to <width> and <height>.                          \n");
   printf("                                                                                                                 \n");
   printf("\033[33mExamples:\033[0m                                                                                         \n");
@@ -77,13 +78,13 @@ execute_proxy(
   } while (!proxy.is_open() && ++failTime < 5);
   if (failTime >= 5) error_info("[Compiler Error]", "Cannot create temporary proxy file.");
   else {
-    proxy << content;
+    proxy << content; proxy.close();
     system(("g++ " + proxyName + ".cpp -o " + proxyName).c_str());
     if (drawcode) {
       system((proxyName + " > " + ouName + ".draw").c_str());
       system((drawCMD + " < " + ouName + ".draw").c_str());
     } else system((proxyName + " | " + drawCMD).c_str());
-    system(("rm -rf " + proxyName + ".cpp " + proxyName).c_str());
+    system(("rm -f " + proxyName + ".cpp " + proxyName).c_str());
   }
 }
 
@@ -96,16 +97,18 @@ execute_proxy(
  */
 string
 drawCMD(
+  bool antialias,
   int width,
   int height,
   string ouName
 ) {
-  return "pfc-draw " + to_string(width) + " " + to_string(height) + " " + ouName;
+  return "pfc-draw " + to_string(width) + " " + to_string(height) + " " + ouName + " " + (antialias ? "antialias" : "none");
 }
 
 string inName;
 string ouName = "a.out";
 
+bool antialias; 
 int width = 200, height = 200;
 
 bool drawcode;   // Generate drawing commands file
@@ -135,6 +138,9 @@ main(
             break;
           case 'l': // -l
             lexicode = true;
+            break;
+          case 'a': // -a
+            antialias = true;
             break;
           case 'o': // -o <filename>
             if (index + 1 < argc) {
@@ -166,5 +172,5 @@ main(
   error_name(inName);
   lexicalize(inName, ouName, lexicode);
   string& content = recognize(ouName, cprxcode);
-  execute_proxy(content, ouName, drawCMD(width, height, ouName), drawcode);
+  execute_proxy(content, ouName, drawCMD(antialias, width, height, ouName), drawcode);
 }

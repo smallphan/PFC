@@ -215,6 +215,7 @@ draw_rect(
  */
 void 
 draw(
+  bool antialias,
   int width,
   int height,
   string ouName
@@ -223,8 +224,9 @@ draw(
   cairo_surface_t *surface = cairo_image_surface_create(CAIRO_FORMAT_ARGB32, width, height);
   cairo_t *cr = cairo_create(surface);
 
-  cairo_set_source_rgb(cr, 1.0, 1.0, 1.0);
+  cairo_set_source_rgba(cr, 0.0, 0.0, 0.0, 0.0);
   cairo_rectangle(cr, 0, 0, width, height);
+  if (!antialias) cairo_set_antialias(cr, CAIRO_ANTIALIAS_NONE);
   cairo_fill(cr);
 
   for (DrawItem item: drawinfo) {
@@ -241,6 +243,7 @@ draw(
   cairo_surface_destroy(surface);
 }
 
+bool antialias;
 int width, height;
 string ouName;
 
@@ -250,10 +253,11 @@ main(
   char* argv[]
 ) {
 
-  if (argc < 4) exit(0);
+  if (argc < 5) exit(0);
   width = abs(atoi(argv[1]));
   height = abs(atoi(argv[2]));
   ouName = string(argv[3]);
+  antialias = (argv[4][0] == 'a');
 
   string opt;
   while (cin >> opt) {
@@ -264,6 +268,6 @@ main(
     if (opt == "rect") input_rect(cin, &drawinfo.back());
   }
 
-  draw(width, height, ouName);
+  draw(antialias, width, height, ouName);
   return 0;
 }
